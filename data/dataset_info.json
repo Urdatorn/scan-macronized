@@ -1,0 +1,21 @@
+{
+  "seed": 42,
+  "split_strategy": "Within each source file, deterministic shuffled 80/10/10; one example per label is reserved for training",
+  "num_records": 52119,
+  "num_sources": 74,
+  "num_labels": 31,
+  "split_counts": {
+    "train": 41695,
+    "test": 5212,
+    "validation": 5212
+  },
+  "split_label_counts": {
+    "train": 31,
+    "validation": 30,
+    "test": 29
+  },
+  "validation_labels_absent_from_train": 0,
+  "test_labels_absent_from_train": 0,
+  "singleton_labels": 0,
+  "labels_with_fewer_than_10_records": 0
+}

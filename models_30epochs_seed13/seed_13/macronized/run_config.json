@@ -1,0 +1,17 @@
+{
+  "variant": "macronized",
+  "model": "distilbert/distilroberta-base",
+  "seed": 13,
+  "epochs": 30.0,
+  "batch_size": 16,
+  "eval_batch_size": 16,
+  "gradient_accumulation_steps": 1,
+  "effective_batch_size": 16,
+  "learning_rate": 2e-05,
+  "weight_decay": 0.01,
+  "warmup_ratio": 0.1,
+  "max_length": 128,
+  "trainable_encoder_layers": 1,
+  "trainable_parameters": 7702303,
+  "total_parameters": 82142239
+}
