@@ -7,6 +7,8 @@ __pycache__/
 models_10epochs/
 
 # Training checkpoints are large and resumable local artifacts. Keep only the
-# explicitly committed best models from the 30-epoch seed-13 experiment.
+# explicitly committed best models from the 30-epoch multiseed experiment.
 checkpoint-*/
 **/checkpoint-*/
+
+.venv

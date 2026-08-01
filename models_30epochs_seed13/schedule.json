@@ -6,5 +6,21 @@
   {
     "seed": 13,
     "variant": "macronized"
+  },
+  {
+    "seed": 42,
+    "variant": "macronized"
+  },
+  {
+    "seed": 42,
+    "variant": "plain"
+  },
+  {
+    "seed": 2026,
+    "variant": "plain"
+  },
+  {
+    "seed": 2026,
+    "variant": "macronized"
   }
 ]
