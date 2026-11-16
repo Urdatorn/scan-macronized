@@ -31,8 +31,7 @@ Test accuracy on 5,212 verses. Gains are given as absolute percentage points
 | 2026 | 71.2% | 76.9% | 5.70 pp | 8.00% |
 | **Mean ± 95% t-interval** | | | **5.79 ± 1.54 pp** | 8.05 ± 2.20% |
 
-The figure reported in the paper (5.8% ± 1.5%) is the absolute gain in
-percentage points. Per-seed values are in
+Per-seed values are in
 `models_30epochs/seed_*/comparison.json`.
 
 ## Training
