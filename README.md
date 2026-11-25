@@ -57,19 +57,6 @@ Hugging Face Hub at [Urdatorn/Makron-scan](https://huggingface.co/Urdatorn/Makro
 which mirrors this repository; the Makron-rerun weights are not on GitHub,
 since its Git LFS budget is used up.
 
-## Earlier 30-epoch result (oga-macronizer-char)
-
-Same setup on `data/macronized/`, trained on a different GPU:
-
-| Seed | Plain | Macronized | Absolute gain | Relative gain |
-|---|---|---|---|---|
-| 13 | 71.9% | 78.4% | 6.45 pp | 8.96% |
-| 42 | 72.5% | 77.8% | 5.22 pp | 7.19% |
-| 2026 | 71.2% | 76.9% | 5.70 pp | 8.00% |
-| **Mean ± 95% t-interval** | | | **5.79 ± 1.54 pp** | 8.05 ± 2.20% |
-
-Per-seed values are in `models_30epochs/seed_*/comparison.json`.
-
 ## Training
 
 ```bash
