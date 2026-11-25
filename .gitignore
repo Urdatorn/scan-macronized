@@ -12,3 +12,4 @@ checkpoint-*/
 **/checkpoint-*/
 
 .venv
+models_30epochs_makron/**/best_model/model.safetensors

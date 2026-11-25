@@ -1,0 +1,15 @@
+{
+  "test_records": 5212,
+  "plain_accuracy": 0.7229470452801228,
+  "macronized_accuracy": 0.7851112816577129,
+  "accuracy_difference_macronized_minus_plain": 0.06216423637759018,
+  "paired_bootstrap_95_percent_ci": [
+    0.050844205679201844,
+    0.07348426707597851
+  ],
+  "plain_only_correct": 300,
+  "macronized_only_correct": 624,
+  "mcnemar_exact_p_value": 6.734760041469208e-27,
+  "bootstrap_samples": 10000,
+  "seed": 2026
+}
