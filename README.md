@@ -52,9 +52,10 @@ The hierarchical bootstrap 95% interval of the gain is 5.3–8.3 pp. Best
 checkpoints fell between epochs 22 and 29. Per-seed values are in
 `models_30epochs_makron/seed_*/comparison.json`, the aggregate in
 `models_30epochs_makron/aggregate_summary.json`. The classifier weights
-(`best_model/model.safetensors`, 318 MB each) are not in the repository, since
-its Git LFS budget is used up; configs, tokenizers, test predictions and
-training histories are.
+of both experiments (`best_model/model.safetensors`, 318 MB each) are on the
+Hugging Face Hub at [Urdatorn/Makron-scan](https://huggingface.co/Urdatorn/Makron-scan),
+which mirrors this repository; the Makron-rerun weights are not on GitHub,
+since its Git LFS budget is used up.
 
 ## Earlier 30-epoch result (oga-macronizer-char)
 
