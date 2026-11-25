@@ -12,17 +12,52 @@ affects downstream hexameter classification, for the paper "Automatic annotation
 - Split sizes: 41,695 train / 5,212 validation / 5,212 test
 - Plain and macronized variants reuse identical record IDs and split assignments
 
-The macronized text was produced with
-`oga-macronizer-char`.
+There are two macronized versions of the data:
 
-## 30-epoch result
+- `data_makron/macronized/` (current, used in the paper): macronized with
+  [Urdatorn/Makron-seed1](https://huggingface.co/Urdatorn/Makron-seed1)
+  by `scripts/macronize_jsonl_makron.py`. `data_makron/plain` links to `data/plain`.
+- `data/macronized/` (earlier): macronized with `Ericu950/oga-macronizer-char`
+  by `scripts/macronize_jsonl.py`.
+
+The two macronizations differ in 20% of the lines, mostly by more long marks
+in the Makron version (train: 21,853 long marks against 20,321).
+
+## 30-epoch result (Makron-seed1, used in the paper)
 
 Both classifiers use `distilbert/distilroberta-base`, with the final encoder
 layer and classification head trainable (7.7M of 82.1M parameters). Best
-checkpoints were selected by validation accuracy.
+checkpoints were selected by validation accuracy. Both variants were trained
+on one Intel Arc GPU (XPU) with the counterbalanced schedule of
+`scripts/run_multiseed_experiment.py`:
+
+```bash
+python3 scripts/run_multiseed_experiment.py --output-dir models_30epochs_makron \
+  --epochs 30 --data-dir data_makron
+python3 scripts/aggregate_multiseed.py --models-dir models_30epochs_makron --epochs 30
+```
 
 Test accuracy on 5,212 verses. Gains are given as absolute percentage points
 (pp) and, for reference, as relative improvement over the plain baseline.
+
+| Seed | Plain | Macronized | Absolute gain | Relative gain | McNemar p |
+|---|---|---|---|---|---|
+| 13 | 72.4% | 80.7% | 8.25 pp | 11.39% | 4e-48 |
+| 42 | 72.2% | 78.1% | 5.93 pp | 8.21% | 7e-24 |
+| 2026 | 72.3% | 78.5% | 6.22 pp | 8.60% | 7e-27 |
+| **Mean ± 95% t-interval** | 72.3% | 79.1% | **6.80 ± 3.14 pp** | 9.40 ± 4.31% |
+
+The hierarchical bootstrap 95% interval of the gain is 5.3–8.3 pp. Best
+checkpoints fell between epochs 22 and 29. Per-seed values are in
+`models_30epochs_makron/seed_*/comparison.json`, the aggregate in
+`models_30epochs_makron/aggregate_summary.json`. The classifier weights
+(`best_model/model.safetensors`, 318 MB each) are not in the repository, since
+its Git LFS budget is used up; configs, tokenizers, test predictions and
+training histories are.
+
+## Earlier 30-epoch result (oga-macronizer-char)
+
+Same setup on `data/macronized/`, trained on a different GPU:
 
 | Seed | Plain | Macronized | Absolute gain | Relative gain |
 |---|---|---|---|---|
@@ -31,9 +66,7 @@ Test accuracy on 5,212 verses. Gains are given as absolute percentage points
 | 2026 | 71.2% | 76.9% | 5.70 pp | 8.00% |
 | **Mean ± 95% t-interval** | | | **5.79 ± 1.54 pp** | 8.05 ± 2.20% |
 
-The figure reported in the paper (5.8% ± 1.5%) is the absolute gain in
-percentage points. Per-seed values are in
-`models_30epochs/seed_*/comparison.json`.
+Per-seed values are in `models_30epochs/seed_*/comparison.json`.
 
 ## Training
 

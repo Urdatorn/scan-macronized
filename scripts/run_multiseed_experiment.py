@@ -13,6 +13,7 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, default=Path("models_10epochs"))
     parser.add_argument("--epochs", type=int, default=10)
     parser.add_argument("--seeds", type=int, nargs="+", default=[13, 42, 2026])
+    parser.add_argument("--data-dir", type=Path, default=Path("data"))
     args = parser.parse_args()
 
     script = Path(__file__).with_name("train_meter_classifier.py")
@@ -59,6 +60,8 @@ def main() -> None:
             "--resume",
             "--trust-local-checkpoint",
             "--cleanup-checkpoints",
+            "--data-dir",
+            str(args.data_dir),
         ]
         print(f"Starting seed={seed}, variant={variant}", flush=True)
         subprocess.run(command, check=True)

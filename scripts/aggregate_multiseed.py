@@ -32,6 +32,7 @@ def main() -> None:
     parser.add_argument("--seeds", type=int, nargs="+", default=[13, 42, 2026])
     parser.add_argument("--bootstrap-samples", type=int, default=10_000)
     parser.add_argument("--bootstrap-seed", type=int, default=42)
+    parser.add_argument("--epochs", type=int, default=10)
     args = parser.parse_args()
 
     metric_names = (
@@ -131,7 +132,7 @@ def main() -> None:
     result = {
         "seeds": args.seeds,
         "test_records_per_seed": len(reference_ids),
-        "epochs": 10,
+        "epochs": args.epochs,
         "per_seed": per_seed,
         "aggregate_metrics": aggregate,
         "accuracy_gain_macronized_minus_plain": {
