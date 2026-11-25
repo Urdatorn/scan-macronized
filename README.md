@@ -1,5 +1,5 @@
 # scan-macronized
-[![DOI](zenodo.24280022.svg)](https://doi.org/10.5281/zenodo.24280022)
+[![DOI](https://img.shields.io/badge/DOI-10.57967%2Fhf%2F11854-blue)](https://doi.org/10.57967/hf/11854)
 
 An experiment measuring how predicted Ancient Greek vowel-length annotation
 affects downstream hexameter classification, for the paper "Automatic annotation of Ancient Greek vowel length".
